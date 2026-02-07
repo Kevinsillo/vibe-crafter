@@ -155,6 +155,10 @@ class User:
         )
 ```
 
+## Punto de entrada
+
+Declarar en `__main__.py` una unica constante `ROOT_PROJECT_PATH` con la ruta raiz del proyecto. Inyectarla al resto de la aplicacion para evitar calculos de rutas dispersos con `Path(__file__).resolve()`.
+
 ## Inyeccion de dependencias
 
 Componer en `infrastructure/config/dependencies.py`. Solo usar librerias de DI si la complejidad lo justifica.

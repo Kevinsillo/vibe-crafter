@@ -46,22 +46,17 @@ El dominio es el nucleo. No depende de nada externo. Todo lo demas depende del d
 
 ```
 src/
-  [nombre_proyecto]/ -> Raiz del paquete/proyecto
-    domain/
-      interfaces/
-      models/
-      exceptions/
-    application/
-      use_cases/
-    infrastructure/
-      controllers/
-      repositories/
-    config.py -> Clase Config con constantes del proyecto (o lectura de variables de entorno)
-tests/
   domain/
+    models/
+    exceptions/
   application/
+    use_cases/
+    ports/
   infrastructure/
-main.py -> punto de entrada de la aplicacion (si es necesario)
+    controllers/
+    repositories/
+    config/
+tests/
 ```
 
-Esta estructura se adapta al lenguaje (ver docs del lenguaje correspondiente).
+La estructura concreta de carpetas, punto de entrada y ubicacion de tests se adapta al lenguaje (ver docs del lenguaje correspondiente).
