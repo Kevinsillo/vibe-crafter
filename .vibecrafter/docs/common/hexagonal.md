@@ -18,7 +18,6 @@ El dominio es el nucleo. No depende de nada externo. Todo lo demas depende del d
 
 ### Aplicacion
 - Casos de uso (un caso de uso = una accion del sistema).
-- Define **puertos** (interfaces): entrada (driving) y salida (driven).
 - Orquesta el dominio. NO contiene logica de negocio.
 - Puede depender del dominio. NUNCA de infraestructura.
 
@@ -47,20 +46,22 @@ El dominio es el nucleo. No depende de nada externo. Todo lo demas depende del d
 
 ```
 src/
-  domain/
-    models/
-    exceptions/
-  application/
-    use_cases/
-    ports/
-  infrastructure/
-    controllers/
-    repositories/
-    config/
+  [nombre_proyecto]/ -> Raiz del paquete/proyecto
+    domain/
+      interfaces/
+      models/
+      exceptions/
+    application/
+      use_cases/
+    infrastructure/
+      controllers/
+      repositories/
+    config.py -> Clase Config con constantes del proyecto (o lectura de variables de entorno)
 tests/
   domain/
   application/
   infrastructure/
+main.py -> punto de entrada de la aplicacion (si es necesario)
 ```
 
 Esta estructura se adapta al lenguaje (ver docs del lenguaje correspondiente).

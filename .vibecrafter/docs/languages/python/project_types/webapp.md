@@ -49,7 +49,7 @@ src/
 ## Reglas
 
 - Aplicar el documento de diseno seleccionado (`.vibecrafter/designs/[diseno].md`).
-- Mobile first: disenar para movil, escalar a desktop.
+- Mobile first: disenar para movil, escalar a desktop (mientras no se especifique lo contrario).
 - Las templates NO contienen logica de negocio.
 - Los routes llaman a casos de uso, nunca acceden a repositorios directamente.
 - Separar layouts (base.html) de paginas y componentes reutilizables.

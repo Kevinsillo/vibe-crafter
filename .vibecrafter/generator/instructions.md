@@ -13,13 +13,13 @@
 
 ---
 
-## Fase 1 - Carga de conocimiento obligatorio (Nivel 1)
+## Fase 1 - Carga de conocimiento base
 
 Lee los siguientes documentos en este orden:
 
-1. `.vibecrafter/common/hexagonal.md`
-2. `.vibecrafter/common/good-practices.md`
-3. `.vibecrafter/common/testing.md`
+1. `.vibecrafter/docs/common/hexagonal.md`
+2. `.vibecrafter/docs/common/good-practices.md`
+3. `.vibecrafter/docs/common/testing.md`
 
 Despues de leerlos, DEBES declarar:
 
@@ -31,45 +31,17 @@ Si no puedes verbalizarlo, NO avances a la siguiente fase.
 
 ---
 
-## Fase 2 - Carga de conocimiento por lenguaje (Nivel 1)
+## Fase 2 - Carga de conocimiento adicional
 
-Segun el lenguaje indicado en el formulario, lee los documentos base de la carpeta correspondiente:
+Lee todos los documentos referenciados en las elecciones del formulario.
 
-| Lenguaje   | Ruta                                   |
-|------------|----------------------------------------|
-| Python     | `.vibecrafter/languages/python/`       |
-| TypeScript | `.vibecrafter/languages/typescript/`   |
-| Java       | `.vibecrafter/languages/java/`         |
-| Go         | `.vibecrafter/languages/go/`           |
+Cada eleccion del usuario indica que documentos adicionales deben consultarse. Localiza y lee cada uno antes de continuar.
 
-Lee los documentos base: `conventions.md` y `testing.md`.
+Para cada documento, justifica por que es necesario segun las elecciones del usuario.
 
 ---
 
-## Fase 3 - Carga condicional (Nivel 2)
-
-Lee estos documentos adicionales segun lo indicado en el formulario. Sustituye `[lang]` por el lenguaje en minusculas (python, typescript, java, go):
-
-| Condicion                        | Documento                                          |
-|----------------------------------|-----------------------------------------------------|
-| Siempre (tipo de proyecto)       | `.vibecrafter/languages/[lang]/project_types/[tipo].md` |
-| Usa base de datos (!= Ninguna)   | `.vibecrafter/languages/[lang]/persistence.md`      |
-| Usa autenticacion (!= No)        | `.vibecrafter/languages/[lang]/auth.md`             |
-| Usa mensajeria/eventos           | `.vibecrafter/languages/[lang]/messaging.md`        |
-| Tiene diseno visual              | `.vibecrafter/designs/[diseno].md`                  |
-
-Mapeo de tipo de proyecto a fichero:
-- API REST → `api-rest.md`
-- CLI → `cli.md`
-- Web app → `webapp.md`
-- Microservicio → `microservice.md`
-- Libreria → `library.md`
-
-Para cada documento, justifica por que es necesario.
-
----
-
-## Fase 4 - Diseno conceptual
+## Fase 3 - Diseno conceptual
 
 ANTES de escribir codigo, genera y presenta al usuario:
 
@@ -84,7 +56,7 @@ Espera aprobacion del usuario antes de continuar.
 
 ---
 
-## Fase 5 - Creacion de estructura
+## Fase 4 - Creacion de estructura
 
 ANTES de escribir logica, crea:
 
@@ -97,29 +69,28 @@ Esto permite al usuario ver la estructura completa antes de generar codigo.
 
 ---
 
-## Fase 6 - Generacion de codigo
+## Fase 5 - Generacion de codigo
 
 Genera el codigo siguiendo:
 
-- La arquitectura validada en Fase 4.
+- La arquitectura validada en Fase 3.
 - Las convenciones del lenguaje (Fase 2).
 - Las reglas de hexagonal y buenas practicas (Fase 1).
-- El diseno visual si aplica (Fase 3).
-- Las web apps son **mobile first y responsive** por defecto.
+- Los documentos adicionales cargados en Fase 2.
 
 Orden de generacion:
 1. Dominio (modelos, excepciones de dominio)
 2. Aplicacion (casos de uso, puertos)
 3. Infraestructura (controladores, repositorios, configuracion)
-4. Tests (segun reglas de `.vibecrafter/common/testing.md`)
+4. Tests (segun reglas de `.vibecrafter/docs/common/testing.md`)
 
 Regla: cada caso de uso debe tener al menos un test antes de pasar al siguiente.
 
-Las dependencias se agregan por consola (ej: `poetry add`, `npm install`), no se escriben manualmente en el fichero de configuracion.
+Las dependencias se agregan por consola (ej: `poetry add`, `npm install`), no se escriben manualmente en el fichero de configuracion para evitar alucinacion con versiones obsoletas.
 
 ---
 
-## Fase 7 - Revision
+## Fase 6 - Revision
 
 Al terminar, realiza una autoevaluacion:
 

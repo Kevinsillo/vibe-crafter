@@ -1,0 +1,8 @@
+.venv
+.claude
+.github
+.vscode
+.pytest_cache
+__pycache__
+poetry.lock
+project.md

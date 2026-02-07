@@ -1,20 +1,36 @@
 # VibeCrafter
 
-Plantilla de proyecto que guia a agentes de IA (Claude Code, Cursor, Copilot, etc.) para generar codigo con arquitectura hexagonal de forma estructurada y profesional.
+Sistema interactivo que genera instrucciones arquitectonicas para agentes de IA (Claude Code, Cursor, Copilot, etc.), guiandolos a producir codigo estructurado y profesional con arquitectura hexagonal.
+
+## Motivacion
+
+Soy un desarrollador apasionado por la programacion, meticuloso con las buenas practicas y con una debilidad por la arquitectura de software bien pensada. Creo que un buen proyecto no es solo el que funciona, sino el que se puede entender, mantener y escalar sin dolor.
+
+Cuando el vibe coding empezo a ganar traccion, vi una oportunidad enorme: democratizar la creacion de software y permitir que cualquier persona con una idea pudiera materializarla. Pero tambien vi el riesgo.
 
 ## El problema
 
 El vibe coding sin estructura produce codigo desorganizado: arquitectura superficial, patrones mal aplicados y logica de negocio mezclada con infraestructura. Los agentes de IA tienden a improvisar si no se les da contexto tecnico previo.
 
+Quienes hemos trabajado con proyectos generados por vibe coding sin guia sabemos lo frustrante que es: codigo que funciona en la demo pero se desmorona al intentar extenderlo, sin separacion de capas, sin tests, con dependencias cruzadas por todas partes. Refactorizarlo suele costar mas que haberlo hecho bien desde el principio.
+
+Y aqui esta la paradoja: el vibe coding es genial para prototipar rapido, pero sin una base arquitectonica solida, el prototipo se convierte en deuda tecnica desde el dia uno.
+
 ## La solucion
 
-VibeCrafter es un sistema de **instrucciones jerarquicas** que fuerza al agente a adquirir conocimiento arquitectonico antes de generar codigo. El usuario solo describe *que* quiere construir; la arquitectura emerge del sistema.
+VibeCrafter es el punto medio entre el vibe coding y la programacion estructurada. No lucha contra la IA, la guia.
+
+Es un sistema de **instrucciones jerarquicas** que fuerza al agente a adquirir conocimiento arquitectonico antes de generar codigo. El usuario solo describe *que* quiere construir; la arquitectura emerge del sistema de instrucciones.
+
+El resultado es codigo generado por IA pero con la estructura, las convenciones y la calidad que esperarias de un proyecto hecho por un equipo senior.
 
 ### Como funciona
 
 1. **El usuario ejecuta un asistente interactivo** que recoge los datos del proyecto (nombre, tipo, lenguaje, dependencias).
-2. **Se genera un fichero `project.md`** con los datos del usuario y las instrucciones para el agente.
-3. **El agente sigue 8 fases obligatorias** antes de escribir una sola linea de codigo: carga de conocimiento, diseno conceptual, creacion de estructura y generacion guiada.
+2. **Se genera un fichero `project.md`** con los datos del usuario y las instrucciones que el agente debe seguir.
+3. **El agente sigue 7 fases obligatorias** (0-6) antes de escribir una sola linea de codigo: carga de conocimiento, diseno conceptual, creacion de estructura y generacion guiada.
+
+Las fases estan definidas en las [instrucciones del generador](.vibecrafter/generator/instructions.md).
 
 ## Inicio rapido
 
@@ -23,37 +39,30 @@ VibeCrafter es un sistema de **instrucciones jerarquicas** que fuerza al agente 
 git clone <url-del-repo> mi-proyecto
 cd mi-proyecto
 
-# Ejecuta el asistente
-bash .vibecrafter/iniciar.sh
+# Instala dependencias y ejecuta el asistente
+cd .vibecrafter/generator
+make install
+make run
 
 # Abre project.md con tu agente de IA y pidele que lo lea
 ```
 
-## Fases del agente
+## Lenguajes y disenos soportados
 
-| Fase | Nombre | Descripcion |
-|------|--------|-------------|
-| 0 | Lectura del formulario | Comprende los requisitos del usuario |
-| 1 | Conocimiento obligatorio | Lee hexagonal, buenas practicas y testing |
-| 2 | Conocimiento por lenguaje | Carga convenciones del lenguaje elegido |
-| 3 | Carga condicional | Lee docs de tipo de proyecto, persistencia, auth, diseno |
-| 4 | Diseno conceptual | Define entidades, casos de uso y estructura |
-| 5 | Creacion de estructura | Genera carpetas y ficheros vacios |
-| 6 | Generacion de codigo | Implementa dominio, aplicacion, infra y tests |
-| 7 | Revision | Autoevaluacion con checklist de reglas |
+- **Lenguajes:** consulta los disponibles en [`.vibecrafter/docs/languages/`](.vibecrafter/docs/languages/)
+- **Disenos visuales:** consulta los disponibles en [`.vibecrafter/docs/designs/`](.vibecrafter/docs/designs/)
 
-## Lenguajes soportados
-
-- **Python** (completo)
-- ~~TypeScript~~ (pendiente)
+El asistente detecta automaticamente los lenguajes, tipos de proyecto y disenos disponibles a partir de la estructura de carpetas.
 
 ## Contribuir
 
-El proyecto esta preparado para crecer:
+Este proyecto nace con vocacion de comunidad. La vision es que cualquier desarrollador pueda aportar sus convenciones, lenguajes o estilos de diseno para que mas personas se beneficien de un vibe coding con criterio.
 
-- **Nuevo lenguaje:** crea una carpeta en `languages/` con `conventions.md` y `testing.md`.
-- **Nuevo tipo de proyecto:** anade un `.md` en `languages/[lang]/project_types/`.
-- **Nuevo diseno:** anade un `.md` en `designs/`. El asistente lo detecta automaticamente.
+Contribuir es tan sencillo como anadir un fichero `.md`:
+
+- **Nuevo lenguaje:** crea una carpeta en [`docs/languages/`](.vibecrafter/docs/languages/) con `conventions.md` y `testing.md`.
+- **Nuevo tipo de proyecto:** anade un `.md` en `docs/languages/[lenguaje]/project_types/`.
+- **Nuevo diseno:** anade un `.md` en [`docs/designs/`](.vibecrafter/docs/designs/). El asistente lo detecta automaticamente.
 
 ## Licencia
 
