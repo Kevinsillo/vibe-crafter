@@ -1,10 +1,7 @@
-.PHONY: install deps test lint format run seed clean
+.PHONY: install test lint format run seed clean
 
 install:
-	pip install poetry
 	poetry config virtualenvs.in-project true
-
-deps:
 	poetry install
 
 test:
