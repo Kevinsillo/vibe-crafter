@@ -38,17 +38,17 @@ VALUES (5, NULL, NULL, 5, 'select', 'Que tipo de proyecto es?', '@scan:languages
 INSERT INTO steps (id, parent_id, trigger_value, "order", type, question, options, variable, md_section, md_template, md_order)
 VALUES (6, 5, 'webapp', 1, 'select', 'Como quieres el frontend?', 'Motor de plantillas HTML (server-side, mas simple)|Frontend separado (SPA con React, Vue, etc.)', 'WEBAPP_FRONTEND', 'datos_proyecto', '- **Frontend:** {value}', 6);
 
--- Step 7: Base de datos
+-- Step 7: Base de datos (escanea docs/databases/)
 INSERT INTO steps (id, parent_id, trigger_value, "order", type, question, options, variable, md_section, md_template, md_order)
-VALUES (7, NULL, NULL, 6, 'select', 'Necesitas base de datos?', 'PostgreSQL|MySQL|MongoDB|SQLite|Ninguna', 'BASE_DATOS', 'contexto', '- **Base de datos:** {value}\n  > Persistencia: `.vibecrafter/docs/languages/[lenguaje]/persistence.md`', 1);
+VALUES (7, NULL, NULL, 6, 'select', 'Necesitas base de datos?', '@scan:databases|Ninguna', 'BASE_DATOS', 'contexto', '- **Base de datos:** {value}\n  > Base de datos: `.vibecrafter/docs/databases/{value}.md`\n  > Persistencia: `.vibecrafter/docs/languages/[lenguaje]/persistence.md`', 1);
 
--- Step 8: Autenticacion
+-- Step 8: Autenticacion - Python (hijo de step 4, trigger "python")
 INSERT INTO steps (id, parent_id, trigger_value, "order", type, question, options, variable, md_section, md_template, md_order)
-VALUES (8, NULL, NULL, 7, 'select', 'Necesitas autenticacion?', 'No|JWT|OAuth2|Session', 'AUTH', 'contexto', '- **Autenticacion:** {value}\n  > Autenticacion: `.vibecrafter/docs/languages/[lenguaje]/auth.md`', 2);
+VALUES (8, 4, 'python', 1, 'select', 'Necesitas autenticacion?', 'No|JWT|OAuth2|Session', 'AUTH', 'contexto', '- **Autenticacion:** {value}\n  > Autenticacion: `.vibecrafter/docs/languages/[lenguaje]/auth.md`', 2);
 
 -- Step 9: Testing
 INSERT INTO steps (id, parent_id, trigger_value, "order", type, question, options, variable, md_section, md_template, md_order)
-VALUES (9, NULL, NULL, 8, 'select', 'Que tipo de testing quieres?', 'Unitarios|Integracion|Unitarios + Integracion|E2E|Ninguno', 'TESTING', 'contexto', '- **Testing:** {value}', 3);
+VALUES (9, NULL, NULL, 7, 'select', 'Que tipo de testing quieres?', 'Unitarios|Integracion|Unitarios + Integracion|E2E|Ninguno', 'TESTING', 'contexto', '- **Testing:** {value}', 3);
 
 -- Step 10: Diseno visual (hijo de step 5, trigger "webapp")
 -- {value} = nombre del .md (ej: "material-ui"), se usa directamente en la ruta
@@ -61,4 +61,12 @@ VALUES (11, 5, 'cli', 1, 'select', 'Que estilo de diseno quieres aplicar?', '@sc
 
 -- Step 12: Notas adicionales
 INSERT INTO steps (id, parent_id, trigger_value, "order", type, question, options, variable, md_section, md_template, md_order)
-VALUES (12, NULL, NULL, 9, 'text', 'Notas adicionales (opcional, Enter para saltar):', NULL, 'NOTAS', 'contexto', '- **Notas extra:** {value}', 5);
+VALUES (12, NULL, NULL, 8, 'text', 'Notas adicionales (opcional, Enter para saltar):', NULL, 'NOTAS', 'contexto', '- **Notas extra:** {value}', 5);
+
+-- Step 13: Autenticacion - Kotlin (hijo de step 4, trigger "kotlin")
+INSERT INTO steps (id, parent_id, trigger_value, "order", type, question, options, variable, md_section, md_template, md_order)
+VALUES (13, 4, 'kotlin', 1, 'select', 'Necesitas autenticacion?', 'No|Firebase Auth|JWT (backend propio)|OAuth2', 'AUTH', 'contexto', '- **Autenticacion:** {value}\n  > Autenticacion: `.vibecrafter/docs/languages/[lenguaje]/auth.md`', 2);
+
+-- Step 14: Diseno visual (hijo de step 5, trigger "android-app")
+INSERT INTO steps (id, parent_id, trigger_value, "order", type, question, options, variable, md_section, md_template, md_order)
+VALUES (14, 5, 'android-app', 1, 'select', 'Que estilo de diseno quieres aplicar?', '@scan:designs|Ninguno', 'DISENO', 'contexto', '- **Diseno visual:** {value}\n  > Estilos: `.vibecrafter/docs/designs/{value}.md`', 4);
