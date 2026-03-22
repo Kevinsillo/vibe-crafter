@@ -1,3 +1,10 @@
+> [!WARNING]
+> **Proyecto obsoleto / Deprecated project**
+>
+> VibeCrafter fue un experimento pionero que anticipaba lo que hoy el mercado ha convertido en **skills y herramientas nativas de los agentes de IA** (como las skills de Claude Code, los custom modes de Cursor, etc.). Queda aquí como muestra histórica de esa evolución.
+>
+> El proyecto sigue siendo funcional, pero **su resultado podría ser imprevisible** con el paso del tiempo al depender del comportamiento de modelos de IA que cambian constantemente. **No recibirá más soporte ni actualizaciones.**
+
 # VibeCrafter
 
 Sistema interactivo que genera instrucciones arquitectonicas para agentes de IA (Claude Code, Cursor, Copilot, etc.), guiandolos a producir codigo estructurado y profesional con arquitectura hexagonal.
